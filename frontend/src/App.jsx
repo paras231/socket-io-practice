@@ -31,8 +31,6 @@ const App = () => {
     });
   }, [data]);
 
-  console.log(typing);
-
   useEffect(() => {
     socket.on("typing", (data) => {
       // console.log(data);
@@ -49,8 +47,12 @@ const App = () => {
     socket.on("response", (res) => {
       setResponse(res);
     });
-  },[response]);
-  console.log(response);
+  }, [response]);
+
+  const handleSendData = () => {
+    socket.emit("newdata", { selected: true });
+  };
+
   return (
     <>
       {/* <h3>socket io</h3> */}
@@ -77,7 +79,8 @@ const App = () => {
         onChange={handleChange}
       />
       <h2>{response?.name}</h2>
-      <h2>{response?.email}</h2> 
+      <h2>{response?.email}</h2>
+      <button onClick={handleSendData}>Send Data</button>
     </>
   );
 };

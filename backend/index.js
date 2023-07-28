@@ -1,10 +1,26 @@
 import express from "express";
 import http from "http";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 import cors from "cors";
 import { Server } from "socket.io";
 import chatRoute from "./routes/chat.js";
+
+dotenv.config();
+
 const PORT = 5000;
 const app = express();
+
+// connect to mongodb
+
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then(() => {
+    console.log("connection successful");
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 
 const server = http.createServer(app);
 

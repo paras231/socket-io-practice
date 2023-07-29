@@ -8,8 +8,8 @@ export const createNewChat = async (req, res) => {
       isGroupChat: false,
       $and: [
         {
-          users: { $elemtMatch: { $eq: req.user.id } },
-          users: { $elemtMatch: { $eq: userId } },
+          users: { $eq: req.user.id },
+          users: { $eq: userId },
         },
       ],
     })
@@ -33,7 +33,6 @@ export const createNewChat = async (req, res) => {
       }).populate("users", "-password");
       res.json(fullChat);
     }
-   
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

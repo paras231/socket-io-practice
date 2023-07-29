@@ -5,7 +5,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { Server } from "socket.io";
 import chatRoute from "./routes/chat.js";
-import userRoute from './routes/user.js';
+import userRoute from "./routes/user.js";
+import msgRoute from "./routes/message.js";
 dotenv.config();
 
 const PORT = 5000;
@@ -28,6 +29,8 @@ app.use(express.json({ limit: "500mb" }));
 app.use(cors());
 app.use("/api/chat", chatRoute);
 app.use("/api/user", userRoute);
+app.use("/api/msg", msgRoute);
+
 const io = new Server(server, {
   cors: {
     origin: "*",

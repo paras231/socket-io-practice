@@ -48,5 +48,9 @@ export const login = async (req, res) => {
 
 export const checkUser = async (req, res) => {
   try {
-  } catch (error) {}
+    const user = req.user.id;
+    res.json({ id: user });
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
 };

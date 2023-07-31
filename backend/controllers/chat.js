@@ -15,9 +15,10 @@ export const createNewChat = async (req, res) => {
     })
       .populate("users", "-password")
       .populate("lastMessage");
-    //  chat = await User.populate(chat,{
-
-    //  })
+     chat = await User.populate(chat,{
+   path:'lastMessage.sender',
+   select:'username email _id'
+     })
     if (chat.length > 0) {
       res.json(chat[0]);
     }

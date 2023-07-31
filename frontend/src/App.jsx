@@ -1,11 +1,18 @@
 import React from "react";
-import GrapView from "./components/GrapView";
-import Home from "./components/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import Layout from "./Pages/Layout";
 const App = () => {
   return (
     <>
-      {/* <Home /> */}
-      <GrapView />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/layout" element={<Layout />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };

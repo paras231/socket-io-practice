@@ -1,10 +1,19 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-import 'react-modern-drawer/dist/index.css'
+import ChatListBar from "../components/ChatListBar";
+import "react-modern-drawer/dist/index.css";
+import SingleChat from "../components/SingleChat";
 const Layout = () => {
   return (
     <>
-      <Sidebar />
+      <div className="flex flex-col">
+        <Sidebar />
+        <section className="flex justify-around">
+          <ChatListBar />
+
+          <SingleChat />
+        </section>
+      </div>
     </>
   );
 };

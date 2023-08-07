@@ -2,6 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/layout");
+  };
   return (
     <>
       <main className="w-full flex">
@@ -77,7 +81,7 @@ const Login = () => {
               </div>
             </div>
 
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label className="font-medium">Email</label>
                 <input
